@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserPointsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('user-points', UserPointsController::class);
+//Route::get('/user-points/show/{id}', function (string $id) {
+//    return UserPointsController::show($id);
+//});
+
+Route::post('/user-points/show/{id}', [UserPointsController::class, 'show']);
